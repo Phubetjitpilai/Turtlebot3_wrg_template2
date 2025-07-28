@@ -39,7 +39,7 @@ class DetectionNode(Node):
 
     def detect_person(self): #เขียน code ตรงนี้
         # Fake detection: ทุกครั้งที่เรียกฟังก์ชันนี้จะ return ว่ามีคน
-        return False  # แสดงว่ามีคนเจอทุกรอบ
+        return False  # สมมุติว่าไม่มีคนทุกรอบ
 
 
 def main(args=None):
