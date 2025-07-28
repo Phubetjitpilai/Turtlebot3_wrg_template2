@@ -25,6 +25,6 @@ package หลักๆ มี 3 ตัว
 เมื่อถึงเป้าหมาย nav_to_goal จะส่ง Empty message ผ่าน topic waypoint_reaced
 เพื่อบอกให้ object_detection_fake_node.py
 ตรวจจับคน และส่งเป็น message true or false
-ว่าเจอไหมผ่าน topic person_detected ไปให้ servo.py แล้วพอ servo ทำงานเสร็จจะส่ง empty message ไปให้ nav_to_goal ผ่าน topic task_done เพื่อบอกให้ไปจุดต่อไป
+ว่าเจอไหมผ่าน topic person_detected ไปให้ servo.py แล้วพอ servo ทำงานเสร็จจะส่ง empty message ไปให้ nav_to_goal  เพื่อบอกให้ไปจุดต่อไป
 
 กรณี detect ไม่เจอ object_detection_fake_node จะส่ง Empty message ให้ nav_to_goal ให้ไปจุดต่อไปเลย
