@@ -13,13 +13,14 @@ class DetectionNode(Node):
         # รอรับสัญญาณจาก Node nav ว่าจบการทำงาน แล้ว
         self.task_done_sub = self.create_subscription(Empty, '/task_completed', self.on_task_completed, 10)
         # ส่งสัญญาณ ไป node อื่น เพื่อดำเนินการต่อไป
-        self.camera_to_servo_pub = self.create_publisher(Empty, '/person_detected', 10)
+        self.camera_to_servo_pub = self.create_publisher(Bool, '/person_detected', 10)
         self.camera_to_nav_pub = self.create_publisher(Empty, '/person_no_detected', 10)
         self.person_detected = False
 
     def on_waypoint_reached(self, msg):
         # เมื่อได้รับข้อความจาก Node 1 (waypoint_reached) จะเริ่มการทำงาน
         self.get_logger().info("Waypoint reached, starting person detection...")
+        detection_msg.data = Bool()
         self.person_detected = self.detect_person()  # # ฟังก์ชันตรวจจับบุคคล
         detection_msg.data = self.person_detected
         if not self.person_detected:
@@ -27,7 +28,7 @@ class DetectionNode(Node):
             self.camera_to_nav_pub.publish(Empty())
         else:
             self.get_logger().info("person detected.")
-            self.camera_to_servo_pub.publish(Empty())
+            self.camera_to_servo_pub.publish(detection_msg.data)
 
     #หยุด spin
     def on_task_completed(self, msg):
