@@ -38,7 +38,7 @@ class DetectionNode(Node):
 
 
     def detect_person(self): #เขียน code ตรงนี้
-        # Fake detection: ทุกครั้งที่เรียกฟังก์ชันนี้จะ return ว่ามีคน
+        # Fake detection: ทุกครั้งที่เรียกฟังก์ชันนี้จะ return ว่ามีคนไหม
         return False  # สมมุติว่าไม่มีคนทุกรอบ
 
 
